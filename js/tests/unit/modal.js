@@ -166,16 +166,15 @@ $(function () {
     assert.expect(3)
     var done = assert.async()
 
-    var div = $('<div id="modal-test"/>')
-    div
+    $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').length, 'modal insterted into dom')
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
-        div.trigger($.Event('keydown', { which: 27 }))
+        $('#modal-test').trigger($.Event('keydown', { which: 27 }))
 
         setTimeout(function () {
           assert.ok(!$('#modal-test').is(':visible'), 'modal hidden')
-          div.remove()
+          $('#modal-test').remove()
           done()
         }, 0)
       })
@@ -186,16 +185,15 @@ $(function () {
     assert.expect(3)
     var done = assert.async()
 
-    var div = $('<div id="modal-test"/>')
-    div
+    $('<div id="modal-test"/>')
       .on('shown.bs.modal', function () {
         assert.ok($('#modal-test').length, 'modal inserted into dom')
         assert.ok($('#modal-test').is(':visible'), 'modal visible')
-        div.trigger($.Event('keyup', { which: 27 }))
+        $('#modal-test').trigger($.Event('keyup', { which: 27 }))
 
         setTimeout(function () {
           assert.ok($('#modal-test').is(':visible'), 'modal still visible')
-          div.remove()
+          $('#modal-test').remove()
           done()
         }, 0)
       })
